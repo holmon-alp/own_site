@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% block title %}
+    <title>
+        Sahifa - {{ post.title }}
+    </title>
+{% endblock title %}
+<div class="mt-1 text-light text-center p-5" style="min-height:70vh">
+
+    <div class="card w-75 mx-auto text-dark">
+         <img class="card-img-top w-50 mx-auto" src="{{ post.image_url }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.about }}</p>
+        </div>
+        <input type="button" value="orqaga" onclick="history.back()" class="btn btn-muted border btn-sm ">
+    </div>
+
+
+
+
+    <div class="w-75 mx-auto" id="comments">
+        <div  id="comment-list">
+        <samp id="reviews">Izohlar ({{comments.count}})</samp>
+        <ul class="list-group w-50 mx-auto bg-warning" id="comments-block">
+         {% for c in comments %}
+            <li class="list-group-item">
+                <mark>{{ c.name }}</mark>
+                <span class="d-block">{{ c.body }}</span>
+            </li>
+        {% endfor %}
+        </ul>
+        </div>
+
+        <div id="comment-form">
+        {% if new_comment %}
+        <div class="alert alert-success mt-2 w-75" role="alert" id="alert_success">
+          Izohingiz uchun raxmat. Admin ruxsati bilan izoh ommaviy bo'ladi
+            <span onclick="hide()" class="text-danger position-absolute end-0">❌</span>
+        </div>
+        {% endif %}
+        <form method="post" style="margin-top: 1.3em;" class="text-center text-light mx-auto w-50 p-4 border-top border-left border-bottom" id="form-block">
+          <p >
+            <label>Ismingiz:</label><br>
+            {{ comment_form.name }}
+           </p>
+            <p>
+            <label>Izoh: </label><br>
+            {{ comment_form.body }}
+            </p>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Jo'natish</button>
+        </form>
+        </div>
+
+      </div>
+    </div>
+<script>
+    var width = window.innerWidth;
+    var comments = document.getElementById("comments");
+    var list = document.getElementById("comment-list");
+    var form = document.getElementById("comment-form");
+    var form_block = document.getElementById("form-block");
+    var comments_block = document.getElementById("comments-block");
+    console.log(width);
+    if (width > 600) {
+        comments.classList.add("row");
+        list.classList.add("col-6");
+        form.classList.add("col-6");
+    } else {
+        list.classList.add("w-100");
+        form.classList.add("w-100");
+        form_block.classList.remove("w-50");
+        comments_block.classList.remove("w-50");
+    }
+</script>
+
+
+{% endblock content %}

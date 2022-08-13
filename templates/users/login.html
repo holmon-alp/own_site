@@ -1,0 +1,30 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block title %}
+	<title>Holmon Alp - Kirish</title>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+<mark class="m-auto">Saytga faqat admin ruxsati bilan kirish mumkin</mark>
+<div id="login">
+    <h1 id="head_text" class="text-center p-4">Hisobga kirish</h1>
+    <form action="{% url 'users:login' %}" method="POST" class="text-light border p-5 w-75 " id="form_login">
+        {% csrf_token %}
+        <label class="d-block">Email:</label>
+        {{ form.username }}<hr>
+        <label class="">Password:</label>
+        {{ form.password }}<hr>
+        <input type="submit" value="Kirish" class="btn btn-success w-50 pl-1 pr-1">
+    </form>
+
+ </div>
+<script>
+    let box = document.querySelector('html');
+    let width = box.clientWidth;
+    if (width > 880) {
+
+    }
+</script>
+{% endblock content %}

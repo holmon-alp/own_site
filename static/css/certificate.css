@@ -1,0 +1,15 @@
+#contain_cer {
+	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKkkVyfkEsL9XcHf_Kd5emJZgvi-1yuFtel4IKQEjiqg-CExXZHn6TaM5dwR0CIhxA9mQ&usqp=CAU);
+	background-size: 20rem 50rem;
+	background-position: center;
+	border-bottom: 0rem dotted gray;
+}
+
+#cer_title {
+	font-family: 'Oswald', sans-serif !important;;
+}
+
+#pdf {
+	margin-bottom: 4rem;
+	height: 12rem;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+		Sertifikatlar
+{% endblock title %}
+
+
+{% block content %}
+
+
+	<div class="container-fluid text-center" id="contain_cer">
+		<h3 class="text-center text-info shadow-lg fst-italic border-top border-info pt-2">
+			Sertifikatlar
+		</h3>
+		{% for s in cers %}
+			<p class="text-warning h3" id="cer_title">
+					{{s.name}}
+			</p>
+			<object data="{{ s.file_url|default_if_none:'#' }}" type="application/pdf" width="80%" height="800px">
+					<p>It appears</p>
+			</object>
+		{% endfor %}
+ </div>
+<script>
+ 	document.title = "Sertifikatlarim";
+</script>
+
+{% endblock content %}

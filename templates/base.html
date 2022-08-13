@@ -1,0 +1,98 @@
+<!doctype html>
+{% load static %}
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="ISO-8859-1">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/certificate.css' %}">
+
+    {% block extrahead %}
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'image/favicon.png' %}">
+    {% endblock %}
+    </head>
+
+    <body class="bg-info">
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid d-flex justify-content-end">
+        <button class="navbar-toggler  text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  text-light" id="navbarTogglerDemo01">
+          <ul class="navbar-nav me-auto mb-2 pt-2 list-group list-group-horizontal gap-3 w-75">
+            <li class="nav-item d-flex justify-content-end ">
+                <a class="nav-link active  text-light ml-3" aria-current="page" href="{% url 'home' %}">Bosh sahifa </a>
+            </li>
+            <li class="nav-item mb-lg-0 d-flex justify-content-end">
+                 <a class="nav-link text-light" href="{% url 'sertifik' %}"> Sertifikatlar </a>
+            </li>
+            <li class="nav-item mb-lg-0 d-flex justify-content-end">
+                <a href="https://github.com/holmon-alp" target="_blank" class="nav-link text-light"> Github </a>
+            </li>
+            <li class="nav-item mb-lg-0 d-flex justify-content-end ">
+                    <a class="nav-link text-light" href="{% url 'admin:index' %}"> Admin </a>
+            </li>
+
+            {% if not request.user.is_authenticated %}
+                 <li class="nav-item mb-lg-0 d-flex justify-content-end ">
+                    <a class="nav-link" href="{% url 'users:login' %}" style="color: #32f20c"> Login </a>
+                 </li>
+              {% else %}
+                <li class="nav-item mb-lg-0 d-inline-flex justify-content-end">
+                    <a class="nav-link text-danger" href="{% url 'users:logout' %}"> Log Out </a>
+                </li>
+              {% endif %}
+            <li class="nav-item mb-lg-0 d-flex justify-content-end  rounded">
+                    <a class="nav-link text-danger" href="tel:+998339180103">
+                        <span class="fs-5">&#128222;</span>
+                    </a>
+            </li>
+          </ul>
+            <marquee class="text-warning" style="word-spacing:0.5em;">
+                Xush kelibsiz Mehmon. Bu mening birinchi shaxsiy saytim. Saytni ishlab chiqishda html, css (Bootstrap), JS, Python texnologiyalaridan foydalanildi
+            </marquee>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid bg-dark " >
+    {% block content %}
+    {% endblock content %}
+    </div>
+
+    <figure class="position-fixed ">
+      <div class="face top"><p id="s"></p></div>
+      <div class="face front"><p id="m"></p></div>
+      <div class="face left"><p id="h"></p></div>
+    </figure>
+
+            <footer class="footer-distributed bottom-0 ">
+                <div class="footer-right ">
+                    <a href="https://facebook.com/holmonalp"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/holmonalp"><i class="fa fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/holmonalp"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://github.com/holmon-alp"><i class="fa fa-github"></i></a>
+                </div>
+                <div class="footer-left ">
+                    <p class="footer-links ">
+                        <a class="link-1" href="{% url 'home' %}">Tepaga</a>
+                        <a href="#blogs">Bloglar</a>
+                        <a href="{% url 'sertifik' %}">Sertifikatlar</a>
+                        <a href="#about">Men haqimda</a>
+                        <a href="tel:+998339180103">Aloqa</a>
+                    </p>
+                    <p>Holmon Alp &copy; 2022</p>
+                </div>
+            </footer>
+
+    <script type="text/javascript" src="{% static 'script/source.js' %}"></script>
+    <script>
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+   <head>
+{% block title %}      <title>TUT</title> {% endblock title %}
+   </head>
+{% block content %}
+    <div style="height: 80vh;">
+      <form method="post" class="p-5 text-center border border-success mb-5 ml-5 mr-5">{% csrf_token %}
+         <h3 class="text-warning text-center mb-5">Rostdan ham "{{ object }}" postini o'chirasizmi?</h3>
+         <input type="submit" value="O'chirish" class="btn btn-danger mb-5 w-25">
+     </form>
+    </div>
+    {% endblock content %}

@@ -1,0 +1,143 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% block title %} <title xmlns="http://www.w3.org/1999/html">Welcome Guest </title>{% endblock title %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}">
+<link rel="stylesheet" href="{% static 'css/carusel.css' %}">
+
+
+<h2 class="mt-1 pt-2 text-center text-light">Ijtimoiy tarmoqlarda</h2>
+<!--Coursel animation-->
+<div class="container_carousel">
+  <div class="carousel">
+    <a class="carousel__face" href="https://github.com/holmon-alp" target="_blank"><span class="a_image">GitHub</span></a>
+    <a class="carousel__face" href="https://linkedin.com/in/holmonalp" target="_blank"><span class="a_image">LinkedIn</span></a>
+    <a class="carousel__face" href="https://instagram.com/holmonalp" target="_blank"><span class="a_image">Profile</span></a>
+    <a class="carousel__face" href="https://t.me/HolmonAlp" target="_blank"><span class="a_image">Telegram</span></a>
+    <a class="carousel__face" href="https://facebook.com/holmonalp" target="_blank"><span class="a_image">Facebook</span></a>
+    <a class="carousel__face" href="https://discordapp.com/users/Mirjamol%20Mirislomov%20(Holmon)#2246" target="_blank">
+      <span class="a_image">Discord</span></a>
+    <a class="carousel__face" href="https://twitter.com/holmonalp" target="_blank"><span class="a_image">Twitter</span></a>
+    <a class="carousel__face"><span class="a_image">How IT Works</span></a>
+    <a class="carousel__face" href="https://instagram.com/holmonalp" target="_blank"><span class="a_image">Instagram</span></a>
+  </div>
+</div>
+
+<div class="space"></div>
+<!--Men haqimda -->
+  <div class="my-about container pt-5 w-75 border-bottom text-center" id="about">
+      <h3 class="text-center text-light">Men ?</h3>
+      <p class="text-light text-center mr-5 pb-3">
+        Salom. Mening ismim Mirjamol va hozirda 20 yoshdaman.<br>Dasturlashga kirib kelishim haqida aytadigan bo'lsam
+        2021-yilda ustozim <mark>Mukhammad Ermatovga</mark> web-dasturlash bo'yicha shogird bo'ldim. U bilan 6 oy davomida FrontEnd asoslari
+        (html, css, JavaScript, bootstrap) va Backend (Python dasturlash tili va Django fremworki, DB bilan ishlash) bo'yicha asosiy bilimlarni oldim.
+        So'ngra 2022-yil Astrum IT academiyasida Software Engeenering yo'nalishida o'qishni boshladim. Bu yerning boshqa
+        IT markazlardan farqi self-study (ya'ni mustaqil ta'lim olish) asosida dasturlash o'rgatiladi. Hozirda men C,  C++, Java,
+        Go kabi texnologiyalardan xabardorman.
+      </p>
+  </div>
+
+<!--Postlar -->
+<div class="post-card">
+  <h2 class="text-center text-light pt-3" id="blogs">Soddagina Bloglar</h2>
+<ul class="cards">
+
+  {% for i in object_list %}
+  <li>
+      <span class="card">
+        <img src="{{ i.image_url }}" class="rounded mx-auto d-block"/>
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+            <img class="card__thumb" src="{% static 'image/men.jpg' %}" alt="alp" />
+            <div class="card__header-text">
+              <h3 class="card__title">{{ i.title }}</h3>
+              <span class="card__status">{{i.time|date:"d:m:Y H:i"}}</span>
+              <a href="{% url 'blog-detail' i.pk  %}" class="text-decoration-none text-warning d-block">Ko'proq</a>
+            </div>
+          </div>
+          <p class="card__description">{{ i.about|truncatechars:70  }}</p>
+        </div>
+      </span>
+    </li>
+
+{% endfor %}
+  <li>
+    <a href="https://uz.wikipedia.org/wiki/Al-Xorazmiy" target="_blank"
+       class="card">
+      <img src="https://th.bing.com/th/id/R.75f872cdfe6e916004675585b0ecccc2?rik=PXPLFSO6A1Zt%2fw&riu=http%3a%2f%2fsokin.moy.su%2f_ph%2f146%2f768418996.jpg&ehk=W%2bwedfryFT54oRNEOLV9xkD%2baLU5Y04Z%2fDxywxd8oi0%3d&risl=&pid=ImgRaw&r=0" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="https://th.bing.com/th/id/R.840c19e6e358397611c8336c8ec94689?rik=Wd5Kf5SXGABqkA&pid=ImgRaw&r=0" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">Al Xorazmiy</h3>
+            <span class="card__status">783-850</span>
+          </div>
+        </div>
+        <p class="card__description">
+          Xorazmiy yunon olimi Ptolemeydan keyin yashagan buyuk geograflardan birinchisi sanaladi.
+        </p>
+      </div>
+    </a>      
+  </li>
+  <li>
+    <a href="https://uz.wikipedia.org/wiki/Abu_Rayhon_Beruniy" target="_blank"
+       class="card">
+      <img src="https://th.bing.com/th/id/R.230216dcca87223fbb02c5dfb34466cd?rik=AreeSJ%2b%2bIm26Sw&riu=http%3a%2f%2fgeografiya.uz%2fuploads%2fposts%2f2015-04%2fthumbs%2f1429883320_beruniy-1.jpg&ehk=EmWSsSAy%2f94J%2bde41dG660zb0VGO7nAZjA2RmxVd8GU%3d&risl=&pid=ImgRaw&r=0" class="card__image" alt="" />
+      <div class="card__overlay">        
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="https://th.bing.com/th/id/R.840c19e6e358397611c8336c8ec94689?rik=Wd5Kf5SXGABqkA&pid=ImgRaw&r=0" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">Al Beruniy</h3>
+            <span class="card__status">973-1048</span>
+          </div>
+        </div>
+        <p class="card__description"> Beruniy yirik olim Abu Nosir ibn Iroqdan Evklid geometriyasi, Ptolemeyning astronomik taʼlimotlari boʻyicha dars olgan. </p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://uz.wikipedia.org/wiki/Mirzo_Ulug%CA%BBbek" target="_blank"
+       class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/uz/8/88/Avicena.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="https://th.bing.com/th/id/R.840c19e6e358397611c8336c8ec94689?rik=Wd5Kf5SXGABqkA&pid=ImgRaw&r=0" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">Ibn Sino</h3>
+            <span class="card__tagline">Tarixni o'zgartirgan turkiylar</span>
+            <span class="card__status">980-1037</span>
+          </div>
+        </div>
+        <p class="card__description">Ibn Sinoning tib ilmida yuksak mahoratga erishishida Buxorolik boshqa bir tabib Abu Mansur al Hasan ibn Nuh al Qumriyning xizmati katta boʻldi. </p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://uz.wikipedia.org/wiki/Mirzo_Ulug%CA%BBbek" target="_blank"
+       class="card">
+      <img src="https://th.bing.com/th/id/OIP.5rME4WFjcZVUvLAYtZTHPQHaJd?pid=ImgDet&rs=1" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="https://th.bing.com/th/id/R.840c19e6e358397611c8336c8ec94689?rik=Wd5Kf5SXGABqkA&pid=ImgRaw&r=0" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">Mirzo Ulug'bek</h3>
+            <span class="card__status">1394-1449</span>
+          </div>          
+        </div>
+        <p class="card__description">Ulugʻbek ilm-fan olamida buyuk astronom sifatida mashhur. Bu borada u amalga oshirgan eng buyuk ish "Ziji jadidi Koʻragoniy" deb nomlangan astronomik jadval sanaladi.</p>
+      </div>
+    </a>
+  </li>
+</ul>
+</div>
+
+
+
+{% endblock content %}

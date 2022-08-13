@@ -1,0 +1,29 @@
+#login {
+	background-image: url(https://t4.ftcdn.net/jpg/04/60/71/01/360_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg);
+	background-size: cover;
+	width: 100vw; 
+	height: 90vh;
+}
+
+#head_text {
+	color: #40eb34;
+}
+
+
+#id_password, #id_password1 {
+	display: block;
+}
+#form_login, #form_signup {
+	margin: auto;
+}
+
+/*
+form ul {
+	display: none;
+}*/
+
+#signup {
+	height: 90vh;
+	background-size: cover;
+	background-image: url(https://media.istockphoto.com/photos/modern-keyboard-wih-blue-submit-button-picture-id639646610?b=1&k=20&m=639646610&s=170667a&w=0&h=T-_FgszjMOlf2dztV3nzDkdxAXnJN8TFnBZIdoVoFZQ=);
+}

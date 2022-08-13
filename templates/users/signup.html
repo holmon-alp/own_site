@@ -1,0 +1,18 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block title %}
+	<title>Holmon Alp - Ro'yxatdan O'tish</title>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<div id="signup">
+    <h1 id="head_text" class="text-center p-4">Ro'yxatdan O'tish</h1>
+    <form action="{% url 'users:login' %}" method="post" class="text-dark border border-dark p-5 w-25" id="form_signup">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Kirish" class="btn btn-success w-50">
+    </form>
+
+ </div>
+{% endblock content %}
